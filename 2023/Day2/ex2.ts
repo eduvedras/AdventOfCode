@@ -51,26 +51,12 @@ try {
 	let result: number = 0;
 
 	for (let [key, value] of Array.from(games.entries())) {
-		let possible: boolean = true;
-		for (let i = 0; i < value.red.length; i++) {
-			if (value.red[i] > maxred) {
-				possible = false;
-			}
-		}
-		for (let i = 0; i < value.green.length; i++) {
-			if (value.green[i] > maxgreen) {
-				possible = false;
-			}
-		}
-		for (let i = 0; i < value.blue.length; i++) {
-			if (value.blue[i] > maxblue) {
-				possible = false;
-			}
-		}
+		let power: number =
+			Math.max(...value.red) *
+			Math.max(...value.green) *
+			Math.max(...value.blue);
 
-		if (possible === true) {
-			result = result + key;
-		}
+		result += power;
 	}
 	console.log(result);
 } catch (err) {

@@ -37,25 +37,23 @@ try {
     var result = 0;
     for (var _i = 0, _a = Array.from(games_1.entries()); _i < _a.length; _i++) {
         var _b = _a[_i], key = _b[0], value = _b[1];
-        var possible = true;
-        for (var i = 0; i < value.red.length; i++) {
-            if (value.red[i] > maxred) {
-                possible = false;
-            }
-        }
-        for (var i = 0; i < value.green.length; i++) {
+        var power = Math.max.apply(Math, value.red) * Math.max.apply(Math, value.green) * Math.max.apply(Math, value.blue);
+        /*for (let i = 0; i < value.red.length; i++) {}
+        for (let i = 0; i < value.green.length; i++) {
             if (value.green[i] > maxgreen) {
                 possible = false;
             }
         }
-        for (var i = 0; i < value.blue.length; i++) {
+        for (let i = 0; i < value.blue.length; i++) {
             if (value.blue[i] > maxblue) {
                 possible = false;
             }
         }
+
         if (possible === true) {
             result = result + key;
-        }
+        }*/
+        result += power;
     }
     console.log(result);
 }
